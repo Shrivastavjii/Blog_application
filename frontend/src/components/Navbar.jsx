@@ -9,7 +9,7 @@ import { IoCloseSharp } from "react-icons/io5";
 
 
 function Navbar() {
-
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     //const [show, setShow] = useState(false);
     const {  profile, isAuthenticated, setIsAuthenticated } = useStore();
     const { blogs } = useStore();
@@ -21,7 +21,7 @@ function Navbar() {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        "http://localhost:8000/api/users/logout",
+        `${BACKEND_URL}/api/users/logout`,
         {},
         { withCredentials: true }
       );
