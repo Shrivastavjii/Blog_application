@@ -11,10 +11,10 @@ import Register from "../src/pages/Register";
 import Dashboard from "../src/pages/DashBoard";
 import Detail from "../src/pages/Detail";
 import { useStore } from "./context/ContextProvider";
-import Creators from "../src/pages/Creators";
+import Creators from "./pages/Creators";
 import {Toaster} from 'react-hot-toast'
 import UpdateBlog from "./dashboard/UpdateBlog";
-import NotFound from "../src/pages/NotFound";
+import NotFound from "./pages/NotFound";
 function App() {
   const location=useLocation();
   const {blogs,isAuthenticated}=useStore()
