@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from 'axios';
 function Creator() {
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [admin, setAdmin] = useState([]);
   console.log(admin);
   useEffect(() => {
     const fetchAdmins = async () => {
       const { data } = await axios.get(
-        "http://localhost:8000/api/users/admins",
+        `${BACKEND_URL}/api/users/admins`,
         {
           withCredentials: true,
         }
