@@ -4,13 +4,14 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 function MyBlogs() {
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const naviagte=useNavigate()
   const [myBlogs, setMyBlogs] = useState([]);
   useEffect(() => {
     const fetchMyBlogs = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:8000/api/blogs/my-blog",
+          `${BACKEND_URL}/api/blogs/my-blog`,
           { withCredentials: true }
         );
         console.log(data);
