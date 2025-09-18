@@ -4,7 +4,7 @@ import Cookies from 'js-cookie'
 export const AuthContext = createContext();
 
 export const ContextProvider = ({ children }) => {
-
+    const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
     const [blogs, setBlogs] = useState();
     const [profile,setProfile]=useState()
     const [isAuthenticated,setIsAuthenticated]=useState(false)
@@ -16,7 +16,7 @@ export const ContextProvider = ({ children }) => {
                 //const token=Cookies.get('jwt');
                 //const parsedToken=token?JSON.parse(token): undefined
                
-                 const {data} = await axios.get("http://localhost:8000/api/users/my-profile",
+                 const {data} = await axios.get(`${BACKEND_URL}/api/users/my-profile`,
                     {withCredentials:true,
                     headers:{"Content-Type":"application/json"}}
                 )
@@ -32,7 +32,7 @@ export const ContextProvider = ({ children }) => {
 
             try {
 
-                const res = await axios.get("http://localhost:8000/api/blogs/all-blogs")
+                const res = await axios.get(`${BACKEND_URL}/api/blogs/all-blogs`)
                 //console.log(res)
                 setBlogs(res.data)
             } catch (error) {
