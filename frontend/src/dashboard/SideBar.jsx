@@ -7,7 +7,7 @@ import { BsFillMenuButtonWideFill } from "react-icons/bs";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
 const SideBar = ({ setComponent }) => {
-
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const navigateto = useNavigate();
   const { profile, isAuthenticated, setIsAuthenticated } = useStore()
   const handleComponents = (value) => {
@@ -24,7 +24,7 @@ const SideBar = ({ setComponent }) => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:8000/api/users/logout',
+      const { data } = await axios.post(`${BACKEND_URL}/api/users/logout`,
         {},
         { withCredentials: true }
       );
