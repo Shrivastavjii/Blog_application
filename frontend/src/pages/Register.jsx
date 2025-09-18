@@ -41,7 +41,7 @@ const handleRegister=async(e)=>{
     formData.append("photo", photo);
 
     try {
-      const {data}=await axios.post("http://localhost:8000/api/users/register",
+      const {data}=await axios.post(`${BACKEND_URL}/api/users/register`,
         formData,
         {
           withCredentials:true,
