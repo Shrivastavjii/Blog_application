@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import { useStore } from "../context/ContextProvider";
 
 function Detail() {
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const { id } = useParams();
   const [blogs, setblogs] = useState({});
   const [comments, setComments] = useState([]);
@@ -18,7 +19,7 @@ function Detail() {
     const fetchblogs = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:8000/api/blogs/single-blog/${id}`,
+          `${BACKEND_URL}/api/blogs/single-blog/${id}`,
 
           {
             withCredentials: true,
@@ -40,7 +41,7 @@ function Detail() {
   const fetchComments = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:8000/api/blogs/comments/${id}`,
+        `${BACKEND_URL}/api/blogs/comments/${id}`,
         { withCredentials: true }
       );
       if (data.success) {
@@ -60,7 +61,7 @@ function Detail() {
   const onSubmit = async (formData) => {
     try {
       const { data } = await axios.post(
-        `http://localhost:8000/api/blogs/comment/${id}`,
+        `${BACKEND_URL}/api/blogs/comment/${id}`,
         { content: formData.content },
         { withCredentials: true }
       );
@@ -80,7 +81,7 @@ function Detail() {
   const updateComment = async (commentId) => {
     try {
       const { data } = await axios.put(
-        `http://localhost:8000/api/blogs/comments/${commentId}`,
+        `${BACKEND_URL}/api/blogs/comments/${commentId}`,
         { content: editingContent },
         { withCredentials: true }
       );
@@ -104,7 +105,7 @@ function Detail() {
   const deleteComment = async (commentId) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:8000/api/blogs/comments/${commentId}`,
+        `${BACKEND_URL}/api/blogs/comments/${commentId}`,
         { withCredentials: true }
       );
       if (data.success) {
