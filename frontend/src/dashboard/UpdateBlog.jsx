@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 
 function UpdateBlog() {
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const navigateTo = useNavigate();
   const { id } = useParams();
 
@@ -29,7 +30,7 @@ function UpdateBlog() {
     const fetchBlog = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:8000/api/blogs/single-blog/${id}`,
+          `${BACKEND_URL}/api/blogs/single-blog/${id}`,
 
           {
             withCredentials: true,
@@ -61,7 +62,7 @@ function UpdateBlog() {
     formData.append("blogImage", blogImage);
     try {
       const { data } = await axios.put(
-        `http://localhost:8000/api/blogs/update/${id}`,
+        `${BACKEND_URL}/api/blogs/update/${id}`,
         formData,
         {
           withCredentials: true,
