@@ -14,7 +14,7 @@ import { useStore } from "./context/ContextProvider";
 import Creators from "./pages/Creators";
 import {Toaster} from 'react-hot-toast'
 import UpdateBlog from "./dashboard/UpdateBlog";
-import NotFound from "./pages/NotFound";
+import NotFound from "../pages/NotFound";
 function App() {
   const location=useLocation();
   const {blogs,isAuthenticated}=useStore()
